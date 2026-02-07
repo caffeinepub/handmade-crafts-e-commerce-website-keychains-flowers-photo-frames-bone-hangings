@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Plan and build an e-commerce website to sell handmade items such as pythliner keychains, flowers, photo frames, and bone hangings.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Handmade crafts shop logo, simple line-art emblem (crafts-logo.dim_512x512.png)\n- Warm handmade crafts hero banner with subtle paper texture and small illustrated motifs (crafts-hero.dim_1600x600.png)\n- Set of four minimal category icons in a cohesive style: keychain, flower, photo frame, hanging ornament (category-icons-sprite.dim_1024x256.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-public-storefront-with-a-home-page-and-product-catalog-focused-on-handmade-items-pythliner-keychains-flowers-photo-frames-bone-hangings-the-catalog-must-support-browsing-by-category-and-viewing-a-product-detail-page-with-images-price-description-and-availability",
+      "title": "Create a public storefront with a home page and product catalog focused on handmade items (pythliner keychains, flowers, photo frames, bone hangings). The catalog must support browsing by category and viewing a product detail page with images, price, description, and availability.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-shopping-cart-functionality-add-to-cart-from-catalog-detail-update-quantities-remove-items-and-show-cart-subtotal-cart-state-must-persist-during-navigation-and-reload-e-g-local-storage",
+      "title": "Implement shopping cart functionality: add-to-cart from catalog/detail, update quantities, remove items, and show cart subtotal. Cart state must persist during navigation and reload (e.g., local storage).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-checkout-flow-that-collects-buyer-details-name-phone-email-shipping-address-optional-order-notes-and-places-an-order-into-the-backend-show-an-order-confirmation-screen-with-an-order-id",
+      "title": "Create a checkout flow that collects buyer details (name, phone/email, shipping address, optional order notes) and places an order into the backend. Show an order confirmation screen with an order ID.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-simple-navigation-structure-header-with-shop-name-links-to-home-catalog-cart-and-a-footer-with-basic-shop-info-all-user-facing-text-must-be-in-english",
+      "title": "Add a simple navigation structure (header with shop name, links to Home/Catalog/Cart) and a footer with basic shop info. All user-facing text must be in English.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-establish-a-coherent-creative-visual-theme-suitable-for-a-handmade-crafts-shop-color-palette-typography-spacing-components-and-apply-it-consistently-across-all-pages-avoid-a-generic-default-look",
+      "title": "Establish a coherent, creative visual theme suitable for a handmade crafts shop (color palette, typography, spacing, components) and apply it consistently across all pages (avoid a generic default look).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-required-generated-images-to-the-project-as-static-assets-under-frontend-public-assets-generated-and-render-them-in-the-ui-do-not-serve-generated-images-through-the-backend",
+      "title": "Add required generated images to the project as static assets under frontend/public/assets/generated and render them in the UI (do not serve generated images through the backend).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create an e-commerce website for selling handmade crafts (e.g., pythliner keychains, flowers, photo frames, bone hangings).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Backend: implement Motoko data models and APIs to manage products and orders within the single main actor. Include functions to list products, get a product by ID, create an order, and fetch order details by ID.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Handmade crafts e-commerce website (keychains, flowers, photo frames, bone hangings)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

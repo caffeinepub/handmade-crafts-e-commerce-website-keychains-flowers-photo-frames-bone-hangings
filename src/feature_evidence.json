@@ -1,0 +1,137 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-public-storefront-with-a-home-page-and-product-catalog-focused-on-handmade-items-pythliner-keychains-flowers-photo-frames-bone-hangings-the-catalog-must-support-browsing-by-category-and-viewing-a-product-detail-page-with-images-price-description-and-availability",
+      "featureTitle": "Create a public storefront with a home page and product catalog focused on handmade items (pythliner keychains, flowers, photo frames, bone hangings). The catalog must support browsing by category and viewing a product detail page with images, price, description, and availability.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/CategoryNav.tsx",
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/pages/CatalogPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ProductDetailPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-shopping-cart-functionality-add-to-cart-from-catalog-detail-update-quantities-remove-items-and-show-cart-subtotal-cart-state-must-persist-during-navigation-and-reload-e-g-local-storage",
+      "featureTitle": "Implement shopping cart functionality: add-to-cart from catalog/detail, update quantities, remove items, and show cart subtotal. Cart state must persist during navigation and reload (e.g., local storage).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/cart/CartProvider.tsx",
+        "frontend/src/cart/cartStorage.ts",
+        "frontend/src/cart/cartTypes.ts",
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/pages/CartPage.tsx",
+        "frontend/src/pages/ProductDetailPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-checkout-flow-that-collects-buyer-details-name-phone-email-shipping-address-optional-order-notes-and-places-an-order-into-the-backend-show-an-order-confirmation-screen-with-an-order-id",
+      "featureTitle": "Create a checkout flow that collects buyer details (name, phone/email, shipping address, optional order notes) and places an order into the backend. Show an order confirmation screen with an order ID.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/cart/CartProvider.tsx",
+        "frontend/src/pages/CheckoutPage.tsx",
+        "frontend/src/pages/OrderConfirmationPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-simple-navigation-structure-header-with-shop-name-links-to-home-catalog-cart-and-a-footer-with-basic-shop-info-all-user-facing-text-must-be-in-english",
+      "featureTitle": "Add a simple navigation structure (header with shop name, links to Home/Catalog/Cart) and a footer with basic shop info. All user-facing text must be in English.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/Footer.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/components/layout/SiteLayout.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-establish-a-coherent-creative-visual-theme-suitable-for-a-handmade-crafts-shop-color-palette-typography-spacing-components-and-apply-it-consistently-across-all-pages-avoid-a-generic-default-look",
+      "featureTitle": "Establish a coherent, creative visual theme suitable for a handmade crafts shop (color palette, typography, spacing, components) and apply it consistently across all pages (avoid a generic default look).",
+      "files": [
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/components/layout/SiteLayout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-required-generated-images-to-the-project-as-static-assets-under-frontend-public-assets-generated-and-render-them-in-the-ui-do-not-serve-generated-images-through-the-backend",
+      "featureTitle": "Add required generated images to the project as static assets under frontend/public/assets/generated and render them in the UI (do not serve generated images through the backend).",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/components/BrandLogo.tsx",
+        "frontend/src/components/CategoryIcon.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

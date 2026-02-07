@@ -1,0 +1,23 @@
+{
+  "frontend/src/App.tsx": "Main application component that sets up TanStack Router with all routes (Home, Catalog, Product Detail, Cart, Checkout, Order Confirmation) and wraps the app with CartProvider for global cart state management.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including fetching products (all, by ID, by category), placing orders, and fetching order details.",
+  "frontend/src/cart/cartTypes.ts": "TypeScript type definitions for cart items and cart state structure.",
+  "frontend/src/cart/cartStorage.ts": "Utility functions for persisting cart state to localStorage with version management and bigint serialization handling.",
+  "frontend/src/cart/CartProvider.tsx": "React context provider that manages shopping cart state (add, update, remove, clear) with localStorage persistence and exposes cart operations via useCart hook.",
+  "frontend/src/components/layout/SiteLayout.tsx": "Root layout component that renders the header, main content area with router outlet, and footer for all pages.",
+  "frontend/src/components/layout/Header.tsx": "Site header with logo, navigation links (Home, Catalog), and shopping cart button with item count badge.",
+  "frontend/src/components/layout/Footer.tsx": "Site footer with shop description, contact section, and attribution with caffeine.ai link.",
+  "frontend/src/components/BrandLogo.tsx": "Reusable component that displays the handmade crafts logo from generated assets.",
+  "frontend/src/components/CategoryIcon.tsx": "Component that displays category icons using CSS sprite positioning from the generated category icons sprite image.",
+  "frontend/src/components/ProductCard.tsx": "Reusable product card component displaying product image, name, category, price, availability badge, and add-to-cart button.",
+  "frontend/src/components/CategoryNav.tsx": "Category navigation component with buttons for filtering products by category (All, Keychains, Flowers, Photo Frames, Bone Hangings).",
+  "frontend/src/pages/HomePage.tsx": "Home page with hero banner, category browsing cards with icons, and featured products section.",
+  "frontend/src/pages/CatalogPage.tsx": "Product catalog page with category filtering navigation and responsive product grid.",
+  "frontend/src/pages/ProductDetailPage.tsx": "Product detail page showing full product information (image, name, description, price, category, availability) with add-to-cart functionality.",
+  "frontend/src/pages/CartPage.tsx": "Shopping cart page displaying cart items with quantity controls, remove buttons, and order summary with checkout button.",
+  "frontend/src/pages/CheckoutPage.tsx": "Checkout form page collecting buyer information (name, contact, shipping address, notes) with validation and order placement.",
+  "frontend/src/pages/OrderConfirmationPage.tsx": "Order confirmation page displaying order ID and shipping information after successful checkout.",
+  "frontend/src/index.css": "Global styles with warm handmade crafts color theme using OKLCH color system for both light and dark modes with earthy tones (avoiding blue/purple).",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom font family and extended theme matching the handmade crafts aesthetic.",
+  "frontend/index.html": "HTML entry point with favicon set to the crafts logo and updated page title."
+}

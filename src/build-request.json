@@ -1,0 +1,160 @@
+{
+  "kind": "build_request",
+  "title": "Handmade crafts e-commerce website (keychains, flowers, photo frames, bone hangings)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a public storefront with a home page and product catalog focused on handmade items (pythliner keychains, flowers, photo frames, bone hangings). The catalog must support browsing by category and viewing a product detail page with images, price, description, and availability.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create website for selling things like pythliner keychains and flowers along with small crafts like different photo frames and bone hangings for selling"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Home page loads and clearly introduces the shop and featured categories/items.",
+        "Catalog page lists products with thumbnail, name, price, and category.",
+        "Users can filter or navigate by category (keychains, flowers, photo frames, bone hangings).",
+        "Product detail page shows at least: name, images, description, price, and an in-stock indicator."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement shopping cart functionality: add-to-cart from catalog/detail, update quantities, remove items, and show cart subtotal. Cart state must persist during navigation and reload (e.g., local storage).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create website for selling things like pythliner keychains and flowers along with small crafts like different photo frames and bone hangings for selling"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can add a product to cart from the product detail page.",
+        "Cart page/drawer displays line items with quantity controls and remove actions.",
+        "Subtotal updates correctly when quantities change.",
+        "Cart contents persist after page refresh."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create a checkout flow that collects buyer details (name, phone/email, shipping address, optional order notes) and places an order into the backend. Show an order confirmation screen with an order ID.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create website for selling things like pythliner keychains and flowers along with small crafts like different photo frames and bone hangings for selling"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Checkout form validates required fields before submission.",
+        "Submitting checkout creates an order record in the backend and returns an order ID.",
+        "Confirmation page displays the order ID and a summary of purchased items."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Backend: implement Motoko data models and APIs to manage products and orders within the single main actor. Include functions to list products, get a product by ID, create an order, and fetch order details by ID.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create website for selling things like pythliner keychains and flowers along with small crafts like different photo frames and bone hangings for selling"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes query method(s) to list products and get product details by ID.",
+        "Backend exposes an update method to create an order and returns a unique order ID.",
+        "Backend stores orders and can return order details for a given order ID.",
+        "At least a small seed set of products exists (covering the four categories) to demonstrate the UI."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add a simple navigation structure (header with shop name, links to Home/Catalog/Cart) and a footer with basic shop info. All user-facing text must be in English.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create website for selling things like pythliner keychains and flowers along with small crafts like different photo frames and bone hangings for selling"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Header includes a cart link/icon with item count badge.",
+        "Footer is present on main pages and contains shop info text in English.",
+        "Navigation works across Home, Catalog, Product Detail, Cart, and Checkout."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Establish a coherent, creative visual theme suitable for a handmade crafts shop (color palette, typography, spacing, components) and apply it consistently across all pages (avoid a generic default look).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Theme is consistent across pages (buttons, cards, headings, form inputs).",
+        "Visual style clearly reads as “handmade crafts” (e.g., warm neutrals, paper/texture-inspired surfaces, tasteful accents) and does not use a blue/purple-dominant palette.",
+        "UI remains accessible with readable contrast and clear hierarchy."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add required generated images to the project as static assets under frontend/public/assets/generated and render them in the UI (do not serve generated images through the backend).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images exist at frontend/public/assets/generated with the specified filenames.",
+        "Home page uses the hero banner image.",
+        "Site uses the logo image in the header and/or favicon area (as appropriate)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor with all logic in the main backend file.",
+    "Do not edit any frontend files under the immutable paths listed in SYSTEM_CONTEXT; compose/wrap components instead.",
+    "Use English for all user-facing UI text."
+  ],
+  "nonGoals": [
+    "Payment processing integration (e.g., Stripe) is out of scope for this build.",
+    "Real-time inventory syncing, shipping rate calculators, and third-party logistics integrations are out of scope.",
+    "Third-party authentication providers (non-Internet Identity) are out of scope."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Handmade crafts shop logo, simple line-art emblem (crafts-logo.dim_512x512.png)",
+      "Warm handmade crafts hero banner with subtle paper texture and small illustrated motifs (crafts-hero.dim_1600x600.png)",
+      "Set of four minimal category icons in a cohesive style: keychain, flower, photo frame, hanging ornament (category-icons-sprite.dim_1024x256.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [
+      "Build a handmade crafts e-commerce storefront to sell pythliner keychains, flowers, photo frames, and bone hangings."
+    ],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

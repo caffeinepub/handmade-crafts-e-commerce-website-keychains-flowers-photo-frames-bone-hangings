@@ -1,0 +1,270 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Handmade crafts e-commerce storefront (frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Public storefront pages: Home + Catalog with category browsing + Product Detail with images, price, description, and availability (data from backend).",
+      "acceptanceCriteria": [
+        "Home page loads and clearly introduces the shop and featured categories/items.",
+        "Catalog page lists products with thumbnail, name, price, and category.",
+        "Users can filter or navigate by category (keychains, flowers, photo frames, bone hangings).",
+        "Product detail page shows at least: name, images, description, price, and an in-stock indicator."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the root app shell and route configuration (Home, Catalog, Product Detail) and wire navigation into the rendered layout."
+        },
+        {
+          "path": "frontend/src/lib/backendClient.ts",
+          "operation": "create",
+          "description": "Add a small typed frontend wrapper around the backend capabilities declared in frontend/src/backend.d.ts (products list, product detail, category filter). Use core-infrastructure to obtain backend connection configuration. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useProducts.ts",
+          "operation": "create",
+          "description": "Add React Query hooks for loading product lists and category-filtered products for the Catalog view (built atop the backend client)."
+        },
+        {
+          "path": "frontend/src/hooks/useProduct.ts",
+          "operation": "create",
+          "description": "Add a React Query hook for loading a single product by ID for the Product Detail view (built atop the backend client)."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Implement the Home page content: shop intro, featured categories (keychains, flowers, photo frames, bone hangings), and featured items section fed by product data. Use shadcn-ui components (e.g., Card, Button) for consistent UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/CatalogPage.tsx",
+          "operation": "create",
+          "description": "Implement Catalog browsing with category navigation/filter and a grid of product cards (thumbnail, name, price, category). Use shadcn-ui components (e.g., Card, Tabs/Select, Button). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ProductDetailPage.tsx",
+          "operation": "create",
+          "description": "Implement Product Detail page showing name, image, description, price, and in-stock indicator driven by Product.available. Use shadcn-ui components (e.g., Badge, Card, Button). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "create",
+          "description": "Create a reusable product card component used by Catalog/featured sections (thumbnail, name, price, category, availability). Use shadcn-ui components to match the app theme. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/CategoryNav.tsx",
+          "operation": "create",
+          "description": "Create a small category navigation UI for the four required categories and integrate it with the Catalog page filtering. Use shadcn-ui components where appropriate. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Shopping cart with add/update/remove, subtotal calculation, and persistence across navigation and reload via local storage.",
+      "acceptanceCriteria": [
+        "Users can add a product to cart from the product detail page.",
+        "Cart page/drawer displays line items with quantity controls and remove actions.",
+        "Subtotal updates correctly when quantities change.",
+        "Cart contents persist after page refresh."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/cart/cartTypes.ts",
+          "operation": "create",
+          "description": "Define cart state types (line items, totals) to keep cart logic consistent across components."
+        },
+        {
+          "path": "frontend/src/cart/cartStorage.ts",
+          "operation": "create",
+          "description": "Implement localStorage read/write helpers for persisted cart state (serialize/deserialize, versioning/safe fallback)."
+        },
+        {
+          "path": "frontend/src/cart/CartProvider.tsx",
+          "operation": "create",
+          "description": "Create a Cart context/provider exposing add-to-cart, update quantity, remove item, clear cart, and derived subtotal; wire persistence using cartStorage."
+        },
+        {
+          "path": "frontend/src/hooks/useCart.ts",
+          "operation": "create",
+          "description": "Add a hook to consume the Cart context for consistent usage across pages/components."
+        },
+        {
+          "path": "frontend/src/pages/CartPage.tsx",
+          "operation": "create",
+          "description": "Implement Cart page UI with line items, quantity controls, remove actions, and subtotal. Use shadcn-ui components (e.g., Button, Input, Separator, Card). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ProductDetailPage.tsx",
+          "operation": "modify",
+          "description": "Wire add-to-cart action from the product detail view using CartProvider/useCart and disable add action when the item is out of stock."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Optionally add an add-to-cart affordance on catalog cards (when in stock), using CartProvider/useCart."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap the routed application with CartProvider to ensure cart state persists across navigation and reload."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Checkout flow to collect buyer details, place an order, and show an order confirmation with order ID and purchased items summary.",
+      "acceptanceCriteria": [
+        "Checkout form validates required fields before submission.",
+        "Submitting checkout creates an order record in the backend and returns an order ID.",
+        "Confirmation page displays the order ID and a summary of purchased items."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CheckoutPage.tsx",
+          "operation": "create",
+          "description": "Create checkout form for buyer name, phone/email, shipping address, optional notes; validate required fields; submit order placement via backend client. Use shadcn-ui form inputs/buttons for consistent styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/OrderConfirmationPage.tsx",
+          "operation": "create",
+          "description": "Create confirmation screen that displays the order ID and a summary of purchased items (from cart snapshot and/or loaded order details). Use shadcn-ui components for layout. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useOrder.ts",
+          "operation": "create",
+          "description": "Add a React Query hook to load order details by ID for the confirmation page (built atop the backend client)."
+        },
+        {
+          "path": "frontend/src/lib/backendClient.ts",
+          "operation": "modify",
+          "description": "Add frontend calls for placing orders and reading order details using the backend capabilities declared in frontend/src/backend.d.ts (without introducing new backend functionality). Use core-infrastructure for backend connection configuration. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/cart/CartProvider.tsx",
+          "operation": "modify",
+          "description": "Add a mechanism to snapshot cart contents for checkout submission and clear cart after successful order placement."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add and wire routes for Checkout and Order Confirmation screens and ensure navigation to confirmation happens after successful submission."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Global navigation header (Home/Catalog/Cart with cart count) and footer with basic shop info; ensure all user-facing text is English.",
+      "acceptanceCriteria": [
+        "Header includes a cart link/icon with item count badge.",
+        "Footer is present on main pages and contains shop info text in English.",
+        "Navigation works across Home, Catalog, Product Detail, Cart, and Checkout."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/SiteLayout.tsx",
+          "operation": "create",
+          "description": "Create a shared layout component that renders Header, main content container, and Footer for all storefront routes."
+        },
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "create",
+          "description": "Implement header with shop name/logo, links to Home/Catalog/Cart, and cart item count badge (from CartProvider). Use shadcn-ui components (e.g., Button, Badge). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/Footer.tsx",
+          "operation": "create",
+          "description": "Implement footer with basic shop info text in English (e.g., handmade craft shop blurb and contact placeholder). Use shadcn-ui components where appropriate. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire all pages (Home, Catalog, Product Detail, Cart, Checkout, Confirmation) to render within SiteLayout and ensure navigation links match the route structure."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Apply a cohesive handmade-crafts visual theme (warm neutrals, paper/texture-inspired surfaces, accessible contrast) consistently across the app.",
+      "acceptanceCriteria": [
+        "Theme is consistent across pages (buttons, cards, headings, form inputs).",
+        "Visual style clearly reads as “handmade crafts” (e.g., warm neutrals, paper/texture-inspired surfaces, tasteful accents) and does not use a blue/purple-dominant palette.",
+        "UI remains accessible with readable contrast and clear hierarchy."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create global styles and CSS variables for a warm handmade-crafts theme (neutral background, earthy accent colors, consistent typography and spacing) compatible with Tailwind/shadcn-ui styling."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions (if needed) to support the handmade palette (avoid blue/purple dominance) and consistent radii/shadows suited for a crafted look."
+        },
+        {
+          "path": "frontend/src/components/layout/SiteLayout.tsx",
+          "operation": "modify",
+          "description": "Apply consistent layout spacing, max-width, and background/surface styling so all pages share the same theme and hierarchy."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Ensure product cards and buttons follow the themed surface/typography conventions using shadcn-ui components. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add required generated images under frontend/public/assets/generated and render them in the UI (logo + hero banner + category icons sprite).",
+      "acceptanceCriteria": [
+        "Generated images exist at frontend/public/assets/generated with the specified filenames.",
+        "Home page uses the hero banner image.",
+        "Site uses the logo image in the header and/or favicon area (as appropriate)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/crafts-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated image asset file at frontend/public/assets/generated/crafts-logo.dim_512x512.png (static asset; do not serve from backend)."
+        },
+        {
+          "path": "frontend/public/assets/generated/crafts-hero.dim_1600x600.png",
+          "operation": "create",
+          "description": "Add the generated image asset file at frontend/public/assets/generated/crafts-hero.dim_1600x600.png (static asset; do not serve from backend)."
+        },
+        {
+          "path": "frontend/public/assets/generated/category-icons-sprite.dim_1024x256.png",
+          "operation": "create",
+          "description": "Add the generated image asset file at frontend/public/assets/generated/category-icons-sprite.dim_1024x256.png (static asset; do not serve from backend)."
+        },
+        {
+          "path": "frontend/src/components/BrandLogo.tsx",
+          "operation": "create",
+          "description": "Create a small logo component that renders the static asset frontend/public/assets/generated/crafts-logo.dim_512x512.png at appropriate sizes for header usage."
+        },
+        {
+          "path": "frontend/src/components/CategoryIcon.tsx",
+          "operation": "create",
+          "description": "Create a category icon component that uses the sprite frontend/public/assets/generated/category-icons-sprite.dim_1024x256.png to visually label the four categories on the Home/Catalog UI."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Render the hero banner using frontend/public/assets/generated/crafts-hero.dim_1600x600.png and include category icon visuals (via CategoryIcon) in the featured categories section."
+        },
+        {
+          "path": "frontend/src/components/layout/Header.tsx",
+          "operation": "modify",
+          "description": "Render the logo in the header using BrandLogo (frontend/public/assets/generated/crafts-logo.dim_512x512.png)."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Wire the logo as the favicon/application icon where appropriate using frontend/public/assets/generated/crafts-logo.dim_512x512.png (static asset)."
+        }
+      ]
+    }
+  ]
+}
